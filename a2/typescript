@@ -1,0 +1,1328 @@
+Script started on Fri Oct 19 07:34:14 2018
+[?1034hbash-3.2$ bashmakecd documents/a2[C[C[C[C[C[C[C[C[C[Ckpl[Kcd documents/a2[C[C[C[C[C[C[C[C[C[Cmake[K
+make: Nothing to be done for `all'.
+bash-3.2$ blitz -g os
+Beginning execution...
+====================  KPL PROGRAM STARTING  ====================
+Example Thread-based Programs...
+Initializing Thread Scheduler...
+_
+-- You should see 70 lines, each consecutively numbered. --
+
+__LockTester-A = 1
+_LockTester-A = 2
+LockTester-A = 3
+_LockTester-A = 4
+_LockTester-A = 5
+LockTester-A = 6
+_LockTester-A = 7
+LockTester-A = 8
+_LockTester-A = 9
+_LockTester-A = 10
+_LockTester-B = 11
+_LockTester-B = 12
+_LockTester-B = 13
+_LockTester-B = 14
+_LockTester-B = 15
+_LockTester-B = 16
+_LockTester-B = 17
+_LockTester-B = 18
+_LockTester-B = 19
+_LockTester-B = 20
+_LockTester-C = 21
+LockTester-C = 22
+LockTester-C = 23
+LockTester-C = 24
+_LockTester-C = 25
+LockTester-C = 26
+LockTester-C = 27
+LockTester-C = 28
+LockTester-C = 29
+LockTester-C = 30
+_LockTester-D = 31
+LockTester-D = 32
+LockTester-D = 33
+_LockTester-D = 34
+LockTester-D = 35
+LockTester-D = 36
+_LockTester-D = 37
+LockTester-D = 38
+LockTester-D = 39
+_LockTester-D = 40
+_LockTester-E = 41
+_LockTester-E = 42
+__LockTester-E = 43
+__LockTester-E = 44
+_LockTester-E = 45
+__LockTester-E = 46
+_LockTester-E = 47
+__LockTester-E = 48
+_LockTester-E = 49
+__LockTester-E = 50
+_LockTester-F = 51
+LockTester-F = 52
+LockTester-F = 53
+LockTester-F = 54
+LockTester-F = 55
+_LockTester-F = 56
+LockTester-F = 57
+LockTester-F = 58
+LockTester-F = 59
+LockTester-F = 60
+LockTester-G = 61
+LockTester-G = 62
+LockTester-G = 63_
+LockTester-G = 64
+LockTester-G = 65
+LockTester-G = 66
+LockTester-G = 67
+LockTester-G = 68
+LockTester-G = 69
+LockTester-G = 70
+_
+*****  A 'wait' instruction was executed and no more interrupts are scheduled... halting emulation!  *****
+
+Done!  The next instruction to execute will be:
+000EC8: 09000000       ret     
+Number of Disk Reads    = 0
+Number of Disk Writes   = 0
+Instructions Executed   = 227108
+Time Spent Sleeping     = 0
+    Total Elapsed Time  = 227108
+bash-3.2$ make
+kpl Main -unsafe
+asm Main.s
+lddd System.o List.o Thread.o Switch.o Synch.o Main.o Runtime.o -o os
+kpl Game -unsafe
+asm Game.s
+lddd System.o List.o Thread.o Switch.o Synch.o Runtime.o Game.o -o game
+kpl Barber -unsafe
+asm Barber.s
+lddd System.o List.o Thread.o Switch.o Synch.o Runtime.o Barber.o -o barber
+bash-3.2$ makeblitz -g os
+Beginning execution...
+====================  KPL PROGRAM STARTING  ====================
+Example Thread-based Programs...
+Initializing Thread Scheduler...
+_Simple Thread Example...
+_main-thread
+_Second-Thread
+main-thread
+Second-Thread
+main-thread
+_Second-Thread
+main-thread
+Second-Thread
+main-thread
+_main-thread
+main-thread
+_
+*****  A 'wait' instruction was executed and no more interrupts are scheduled... halting emulation!  *****
+
+Done!  The next instruction to execute will be:
+000EC8: 09000000       ret     
+Number of Disk Reads    = 0
+Number of Disk Writes   = 0
+Instructions Executed   = 35564
+Time Spent Sleeping     = 0
+    Total Elapsed Time  = 35564
+bash-3.2$ make
+kpl Main -unsafe
+asm Main.s
+lddd System.o List.o Thread.o Switch.o Synch.o Main.o Runtime.o -o os
+kpl Game -unsafe
+asm Game.s
+lddd System.o List.o Thread.o Switch.o Synch.o Runtime.o Game.o -o game
+kpl Barber -unsafe
+asm Barber.s
+lddd System.o List.o Thread.o Switch.o Synch.o Runtime.o Barber.o -o barber
+bash-3.2$ makeblitz -g os
+Beginning execution...
+====================  KPL PROGRAM STARTING  ====================
+Example Thread-based Programs...
+Initializing Thread Scheduler...
+_     ___   Producer-A         A
+A       Producer-A         A
+AA      Producer-A         A
+AAA  _   Producer-A         A
+AAAA    Producer-A         A
+AAAAA_   Consumer-1                               |      A
+AAAA    Consumer-1                               |      A
+AAA  _   Consumer-1                               |      A
+AA      Consumer-2                               |          A
+A       Consumer-3                               |              A
+     _   Producer-B             B
+B       Producer-B             B
+BB   _   Producer-C                 C
+BBC     Producer-D                     D
+BBCD    Producer-E                         E
+BBCDE_   Consumer-1                               |      B
+BCDE    Consumer-1                               |      B
+CDE     _Consumer-1                               |      C
+DE      Consumer-2                               |          D
+E       Consumer-3                               |              E
+     _   Producer-B             B
+B       Producer-B             B
+BB      Producer-C                 C
+BBC_     Producer-D                     D
+BBCD    Producer-E                         E
+BBCDE_   Consumer-1                               |      B
+BCDE    Consumer-1                               |      B
+CDE     Consumer-1                               |      C
+DE   _   Consumer-2                               |          D
+E       Consumer-3                               |              E
+     _   Producer-B             B
+B       Producer-C                 C
+BC      Producer-C                 C
+BCC  _   Producer-D                     D
+BCCD    Producer-E                         E
+BCCDE_   Consumer-1                               |      B
+CCDE    Consumer-1                               |      C
+CDE     Consumer-1                               |      C
+DE   _   Consumer-2                               |          D
+E       Consumer-3                               |              E
+        Producer-C                 C
+C    _   Producer-D                     D
+CD      Producer-D                     D
+CDD  _   Producer-E                         E
+CDDE    Producer-E                         E
+CDDEE   Consumer-1                               |      C
+DDEE _   Consumer-1                               |      D
+DEE     Consumer-1                               |      D
+EE      Consumer-2                               |          E
+E    _   Consumer-3                               |              E
+     
+*****  A 'wait' instruction was executed and no more interrupts are scheduled... halting emulation!  *****
+
+Done!  The next instruction to execute will be:
+000EC8: 09000000       ret     
+Number of Disk Reads    = 0
+Number of Disk Writes   = 0
+Instructions Executed   = 122093
+Time Spent Sleeping     = 0
+    Total Elapsed Time  = 122093
+bash-3.2$ blitz -g os[7Pmake
+kpl Main -unsafe
+asm Main.s
+lddd System.o List.o Thread.o Switch.o Synch.o Main.o Runtime.o -o os
+kpl Game -unsafe
+asm Game.s
+lddd System.o List.o Thread.o Switch.o Synch.o Runtime.o Game.o -o game
+kpl Barber -unsafe
+asm Barber.s
+lddd System.o List.o Thread.o Switch.o Synch.o Runtime.o Barber.o -o barber
+bash-3.2$ makeblitz -g os
+Beginning execution...
+====================  KPL PROGRAM STARTING  ====================
+Example Thread-based Programs...
+Initializing Thread Scheduler...
+_Plato
+    Sartre
+        Kant
+            Nietzsche
+                Aristotle
+_.   .   .   .   .   
+_    .   .   .   .   
+E   .   .   .   .   
+.   .   .   .   .   
+_    .   .   .   .   
+E   .   .   .   .   
+.   .   .   .   .   
+    .   .   _.   .   
+E   .   .   .   .   
+.   .   .   .   .   
+    .   .   .   .   
+E   .   .   .   .   
+_.   .   .   .   .   
+    .   .   .   .   
+E   .   .   .   .   
+.   .   .   .   .   
+_    .   .   .   .   
+E   .   .   .   .   
+.   .   .   .   .   
+    .   .   .   .   
+_E   .   .   .   .   
+.   .   .   .   .   
+.       .   .   .   
+.   E   .   _.   .   
+.   .   .   .   .   
+.       .   .   .   
+.   E   .   .   .   
+.   .   .   .   _.   
+.       .   .   .   
+.   E   .   .   .   
+.   .   .   .   .   
+_.       .   .   .   
+.   E   .   .   .   
+.   .   .   .   .   
+.       .   .   .   
+.   E   .   .   .   
+_.   .   .   .   .   
+.       .   .   .   
+.   E   .   .   .   
+.   .   .   .   .   
+_.       .   .   .   
+.   E   .   .   .   
+.   .   .   .   .   
+_.   .       .   .   
+.   .   E   .   .   
+.   .   .   .   .   
+.   .       .   .   
+_.   .   E   .   .   
+.   .   .   .   .   
+.   .       .   .   
+.   .   E   .   .   
+_.   .   .   .   .   
+.   .       .   .   
+.   .   E   .   .   
+.   .   .   .   .   
+_.   .       .   .   
+.   .   E   .   .   
+.   .   .   .   .   
+.   .       .   .   
+.   _.   E   .   .   
+.   .   .   .   .   
+.   .       .   .   
+.   .   E   .   .   
+.   .   _.   .   .   
+.   .   .       .   
+.   .   .   E   .   
+.   .   .   .   .   
+_.   .   .       .   
+.   .   .   E   .   
+.   .   .   .   .   
+.   .   .       _.   
+.   .   .   E   .   
+.   .   .   .   .   
+.   .   .       .   
+.   .   .   E   .   
+_.   .   .   .   .   
+.   .   .       .   
+.   .   .   E   .   
+.   .   .   .   .   
+_.   .   .       .   
+.   .   .   E   .   
+.   .   .   .   .   
+.   .   .       .   
+_.   .   .   E   .   
+.   .   .   .   .   
+.   .   .   .       
+.   .   .   .   _E   
+.   .   .   .   .   
+.   .   .   .       
+.   .   .   .   E   
+.   .   .   .   .   
+_.   .   .   .       
+.   .   .   .   E   
+.   .   .   .   .   
+_.   .   .   .       
+.   .   .   .   E   
+.   .   .   .   .   
+.   .   .   .       
+.   .   .   .   E   
+_.   .   .   .   .   
+.   .   .   .       
+.   .   .   .   E   
+.   .   .   .   .   
+_.   .   .   .       
+.   .   .   .   E   
+.   .   .   .   .   
+_
+*****  A 'wait' instruction was executed and no more interrupts are scheduled... halting emulation!  *****
+
+Done!  The next instruction to execute will be:
+000EC8: 09000000       ret     
+Number of Disk Reads    = 0
+Number of Disk Writes   = 0
+Instructions Executed   = 156781
+Time Spent Sleeping     = 0
+    Total Elapsed Time  = 156781
+bash-3.2$ make
+make: Nothing to be done for `all'.
+bash-3.2$ makeblitz -g os[K[Kgmae[K[K[Kame
+Beginning execution...
+====================  KPL PROGRAM STARTING  ====================
+Initializing Thread Scheduler...
+___A  requests  4
+------------------------------Number of dice now avail = 8
+A  proceeds with  4
+------------------------------Number of dice now avail = 4
+_B  requests  4
+------------------------------Number of dice now avail = 4
+B  proceeds with  4
+------------------------------Number of dice now avail = 0
+C  requests  5
+------------------------------Number of dice now avail = 0
+D  requests  5
+------------------------------Number of dice now avail = 0
+_E  requests  2
+------------------------------Number of dice now avail = 0
+F  requests  2
+------------------------------Number of dice now avail = 0
+G  requests  1
+------------------------------Number of dice now avail = 0
+_H  requests  1
+------------------------------Number of dice now avail = 0
+A  releases and adds back  4
+------------------------------Number of dice now avail = 4
+B  releases and adds back  4
+------------------------------Number of dice now avail = 8
+_C  proceeds with  5
+------------------------------Number of dice now avail = 3
+A  requests  4
+------------------------------Number of dice now avail = 3
+_B  requests  4
+------------------------------Number of dice now avail = 3
+C  releases and adds back  5
+------------------------------Number of dice now avail = 8
+_D  proceeds with  5
+------------------------------Number of dice now avail = 3
+C  requests  5
+------------------------------Number of dice now avail = 3
+_E  proceeds with  2
+------------------------------Number of dice now avail = 1
+D  releases and adds back  5
+------------------------------Number of dice now avail = 6
+F  proceeds with  2_
+------------------------------Number of dice now avail = 4
+E  releases and adds back  2
+------------------------------Number of dice now avail = 6
+D  requests  5
+------------------------------Number of dice now avail = 6
+_G  proceeds with  1
+------------------------------Number of dice now avail = 5
+F  releases and adds back  2
+------------------------------Number of dice now avail = 7
+E  requests  2
+------------------------------Number of dice now avail = 7
+_H  proceeds with  1
+------------------------------Number of dice now avail = 6
+G  releases and adds back  1
+------------------------------Number of dice now avail = 7
+F  requests  2
+------------------------------Number of dice now avail = 7
+_A  proceeds with  4
+------------------------------Number of dice now avail = 3
+H  releases and adds back  1
+------------------------------Number of dice now avail = 4
+_G  requests  1
+------------------------------Number of dice now avail = 4
+B  proceeds with  4
+------------------------------Number of dice now avail = 0
+A  releases and adds back  4
+------------------------------Number of dice now avail = 4
+_H  requests  1
+------------------------------Number of dice now avail = 4
+B  releases and adds back  4
+------------------------------Number of dice now avail = 8
+_A  requests  4
+------------------------------Number of dice now avail = 8
+C  proceeds with  5
+------------------------------Number of dice now avail = 3
+_B  requests  4
+------------------------------Number of dice now avail = 3
+C  releases and adds back  5
+------------------------------Number of dice now avail = 8
+_D  proceeds with  5
+------------------------------Number of dice now avail = 3
+C  requests  5
+------------------------------Number of dice now avail = 3
+_E  proceeds with  2
+------------------------------Number of dice now avail = 1
+D  releases and adds back  5
+------------------------------Number of dice now avail = 6
+F  proceeds with  _2
+------------------------------Number of dice now avail = 4
+E  releases and adds back  2
+------------------------------Number of dice now avail = 6
+D  requests  5
+------------------------------Number of dice now avail = 6
+_G  proceeds with  1
+------------------------------Number of dice now avail = 5
+F  releases and adds back  2
+------------------------------Number of dice now avail = 7
+E  requests  2
+------------------------------Number of dice now avail = 7
+_H  proceeds with  1
+------------------------------Number of dice now avail = 6
+G  releases and adds back  1
+------------------------------Number of dice now avail = 7
+F  requests  2
+------------------------------Number of dice now avail = 7
+_A  proceeds with  4
+------------------------------Number of dice now avail = 3
+H  releases and adds back  1
+------------------------------Number of dice now avail = 4
+_G  requests  1
+------------------------------Number of dice now avail = 4
+B  proceeds with  4
+------------------------------Number of dice now avail = 0
+A  releases and adds back  4
+------------------------------Number of dice now avail = 4
+_H  requests  1
+------------------------------Number of dice now avail = 4
+B  releases and adds back  4
+------------------------------Number of dice now avail = 8
+_A  requests  4
+------------------------------Number of dice now avail = 8
+C  proceeds with  5
+------------------------------Number of dice now avail = 3
+_B  requests  4
+------------------------------Number of dice now avail = 3
+C  releases and adds back  5
+------------------------------Number of dice now avail = 8
+_D  proceeds with  5
+------------------------------Number of dice now avail = 3
+C  requests  5
+------------------------------Number of dice now avail = 3
+_E  proceeds with  2
+------------------------------Number of dice now avail = 1
+D  releases and adds back  5
+------------------------------Number of dice now avail = 6
+F  proceeds with_  2
+------------------------------Number of dice now avail = 4
+E  releases and adds back  2
+------------------------------Number of dice now avail = 6
+D  requests  5
+------------------------------Number of dice now avail = 6
+_G  proceeds with  1
+------------------------------Number of dice now avail = 5
+F  releases and adds back  2
+------------------------------Number of dice now avail = 7
+E  requests  2
+------------------------------Number of dice now avail = 7
+_H  proceeds with  1
+------------------------------Number of dice now avail = 6
+G  releases and adds back  1
+------------------------------Number of dice now avail = 7
+F  requests  2
+------------------------------Number of dice now avail = 7
+_A  proceeds with  4
+------------------------------Number of dice now avail = 3
+H  releases and adds back  1
+------------------------------Number of dice now avail = 4
+_G  requests  1
+------------------------------Number of dice now avail = 4
+B  proceeds with  4
+------------------------------Number of dice now avail = 0
+A  releases and adds back  4
+------------------------------Number of dice now avail = 4
+_H  requests  1
+------------------------------Number of dice now avail = 4
+B  releases and adds back  4
+------------------------------Number of dice now avail = 8
+_A  requests  4
+------------------------------Number of dice now avail = 8
+C  proceeds with  5
+------------------------------Number of dice now avail = 3
+_B  requests  4
+------------------------------Number of dice now avail = 3
+C  releases and adds back  5
+------------------------------Number of dice now avail = 8
+_D  proceeds with  5
+------------------------------Number of dice now avail = 3
+C  requests  5
+------------------------------Number of dice now avail = 3
+_E  proceeds with  2
+------------------------------Number of dice now avail = 1
+D  releases and adds back  5
+------------------------------Number of dice now avail = 6
+F  proceeds with  2_
+------------------------------Number of dice now avail = 4
+E  releases and adds back  2
+------------------------------Number of dice now avail = 6
+D  requests  5
+------------------------------Number of dice now avail = 6
+_G  proceeds with  1
+------------------------------Number of dice now avail = 5
+F  releases and adds back  2
+------------------------------Number of dice now avail = 7
+E  requests  2
+------------------------------Number of dice now avail = 7
+_H  proceeds with  1
+------------------------------Number of dice now avail = 6
+G  releases and adds back  1
+------------------------------Number of dice now avail = 7
+F  requests  2
+------------------------------Number of dice now avail = 7
+_A  proceeds with  4
+------------------------------Number of dice now avail = 3
+H  releases and adds back  1
+------------------------------Number of dice now avail = 4
+_G  requests  1
+------------------------------Number of dice now avail = 4
+B  proceeds with  4
+------------------------------Number of dice now avail = 0
+A  releases and adds back  4
+------------------------------Number of dice now avail = 4
+_H  requests  1
+------------------------------Number of dice now avail = 4
+B  releases and adds back  4
+------------------------------Number of dice now avail = 8
+_C  proceeds with  5
+------------------------------Number of dice now avail = 3
+_C  releases and adds back  5
+------------------------------Number of dice now avail = 8
+_D  proceeds with  5
+------------------------------Number of dice now avail = 3
+E  proceeds with  2
+------------------------------Number of dice now avail = 1
+_D  releases and adds back  5
+------------------------------Number of dice now avail = 6
+F  proceeds with  2
+------------------------------Number of dice now avail = 4
+E  releases and adds back  2
+------------------------------Number of dice now avail = 6
+_G  proceeds with  1
+------------------------------Number of dice now avail = 5
+F  releases and adds back  2
+------------------------------Number of dice now avail = 7
+_H  proceeds with  1
+------------------------------Number of dice now avail = 6
+G  releases and adds back  1
+------------------------------Number of dice now avail = 7
+_H  releases and adds back  1
+------------------------------Number of dice now avail = 8
+_
+*****  A 'wait' instruction was executed and no more interrupts are scheduled... halting emulation!  *****
+
+Done!  The next instruction to execute will be:
+000EC8: 09000000       ret     
+Number of Disk Reads    = 0
+Number of Disk Writes   = 0
+Instructions Executed   = 277487
+Time Spent Sleeping     = 0
+    Total Elapsed Time  = 277487
+bash-3.2$ blitz -g game[C[C[C[C[C[C[C[C[C[Cmake[Kblitz -g game[K[K[K[Kbarber
+Beginning execution...
+====================  KPL PROGRAM STARTING  ====================
+Initializing Thread Scheduler...
+__Barber  1   2   3   4   5   6   7   8   9   10  11  12  13  14  15  16  17  18  19  20
+
+____|_____|          E
+|X____|          S
+|X____|          ----E
+|XX___|          ----S
+_|XX___|          --------E
+|XXX__|          --------S
+|XXX__|          ------------E
+|XXXX_|          ------------S
+_|XXXX_|          ----------------E
+|XXXXX|          ----------------S
+|XXXXX|          --------------------E
+|XXXXX|          --------------------L
+_|XXXXX|          --------------------E
+|XXXXX|          --------------------L
+|XXXXX|          --------------------E
+|XXXXX|          --------------------L
+|XXXXX|_          --------------------E
+|XXXXX|          --------------------L
+|XXXXX|          --------------------E
+|XXXXX|          --------------------L
+|XXXXX|          --------------------E
+|_XXXXX|          --------------------L
+|XXXXX|          --------------------E
+|XXXXX|          --------------------L
+|XXXXX|          --------------------E
+|XXXXX|          -----------------_---L
+|XXXXX|          --------------------E
+|XXXXX|          --------------------L
+|XXXXX|          --------------------E
+|XXXXX|          --------------------L
+|_XXXXX|          --------------------E
+|XXXXX|          --------------------L
+|XXXXX|          ------------------------E
+|XXXXX|          ------------------------L
+_|XXXXX|          ------------------------E
+|XXXXX|          ------------------------L
+|XXXXX|          ------------------------E
+|XXXXX|          ------------------------L
+_|XXXXX|          ------------------------E
+|XXXXX|          ------------------------L
+|XXXXX|          ------------------------E
+|XXXXX|          ------------------------L
+|XXXXX|_          ------------------------E
+|XXXXX|          ------------------------L
+|XXXXX|          ------------------------E
+|XXXXX|          ------------------------L
+|XXXXX|          ---------_---------------E
+|XXXXX|          ------------------------L
+|XXXXX|          ------------------------E
+|XXXXX|          ------------------------L
+|XXXXX|          -------------------_-----E
+|XXXXX|          ------------------------L
+|XXXXX|          ------------------------E
+|XXXXX|          ------------------------L
+|XXXXX|_          ----------------------------E
+|XXXXX|          ----------------------------L
+|XXXXX|          ----------------------------E
+|XXXXX|          ----------------------------L
+|XXX_XX|          ----------------------------E
+|XXXXX|          ----------------------------L
+|XXXXX|          ----------------------------E
+|XXXXX|          ----------------------------L
+_|XXXXX|          ----------------------------E
+|XXXXX|          ----------------------------L
+|XXXXX|          ----------------------------E
+|XXXXX|          ----------------------------L
+_|XXXXX|          ----------------------------E
+|XXXXX|          ----------------------------L
+|XXXXX|          ----------------------------E
+|XXXXX|          ----------------------------L
+_|XXXXX|          ----------------------------E
+|XXXXX|          ----------------------------L
+|XXXXX|          ----------------------------E
+|XXXXX|          ----------------------------L
+_|XXXXX|          ----------------------------E
+|XXXXX|          ----------------------------L
+|XXXXX|          --------------------------------E
+_|XXXXX|          --------------------------------L
+|XXXXX|          --------------------------------E
+|XXXXX|          --------------------------------L
+|XXXXX|          -------------_-------------------E
+|XXXXX|          --------------------------------L
+|XXXXX|          --------------------------------E
+|XXXXX|          --------------------------------L
+|X_XXXX|          --------------------------------E
+|XXXXX|          --------------------------------L
+|XXXXX|          --------------------------------E
+|XXXXX|          --------------------------------L
+_|XXXXX|          --------------------------------E
+|XXXXX|          --------------------------------L
+|XXXXX|          --------------------------------E
+|XXXXX|          -----------_---------------------L
+|XXXXX|          --------------------------------E
+|XXXXX|          --------------------------------L
+|XXXXX|          --------------------------------E
+_|XXXXX|          --------------------------------L
+|XXXXX|          --------------------------------E
+|XXXXX|          --------------------------------L
+_|XXXXX|          ------------------------------------E
+|XXXXX|          ------------------------------------L
+|XXXXX|          ------------------------------------E
+|XXXXX|          -------------_-----------------------L
+|XXXXX|          ------------------------------------E
+|XXXXX|          ------------------------------------L
+|XXXXX|          -------------------------_-----------E
+|XXXXX|          ------------------------------------L
+|XXXXX|          ------------------------------------E
+|XXXXX|          ------------------------------------L
+_|XXXXX|          ------------------------------------E
+|XXXXX|          ------------------------------------L
+|XXXXX|          ------------------------------------E
+|XXXXX|          ------------------_------------------L
+|XXXXX|          ------------------------------------E
+|XXXXX|          ------------------------------------L
+|XXXXX|          ------------------------------_------E
+|XXXXX|          ------------------------------------L
+|XXXXX|          ------------------------------------E
+|XXXXX|          ------------------------------------L
+|XX_XXX|          ------------------------------------E
+|XXXXX|          ------------------------------------L
+|XXXXX|          ----------------------------------------E
+_|XXXXX|          ----------------------------------------L
+|XXXXX|          ----------------------------------------E
+|XXXXX|          ----------------------------------------L
+_|XXXXX|          ----------------------------------------E
+|XXXXX|          ----------------------------------------L
+|XXXXX|          ----------------------------------------E
+|XXXXX|          -------_---------------------------------L
+|XXXXX|          ----------------------------------------E
+|XXXXX|          ----------------------------------------L
+|XXXXX|          -------_---------------------------------E
+|XXXXX|          ----------------------------------------L
+|XXXXX|          ----------------------------------------E
+|XXXXX|          ------------------------_----------------L
+|XXXXX|          ----------------------------------------E
+|XXXXX|          ----------------------------------------L
+|XXXXX|          ------------------------_----------------E
+|XXXXX|          ----------------------------------------L
+|XXXXX|          ----------------------------------------E
+|XXXXX|          ----------------------------------------L
+_|XXXXX|          ----------------------------------------E
+|XXXXX|          ----------------------------------------L
+|XXXXX|          ------------_--------------------------------E
+|XXXXX|          --------------------------------------------L
+|XXXXX|          --------------------------------------------E
+|XXXXX|          ------------------_--------------------------L
+|XXXXX|          --------------------------------------------E
+|XXXXX|          --------------------------------------------L
+|XXXXX|          ------_--------------------------------------E
+|XXXXX|          --------------------------------------------L
+|XXXXX|          --------------------------------------------E
+|XXXXX|          ------------_--------------------------------L
+|XXXXX|          --------------------------------------------E
+|XXXXX|          --------------------------------------------L
+|XXXXX|          -_-------------------------------------------E
+|XXXXX|          --------------------------------------------L
+|XXXXX|          --------------------------------------------E
+|XXXXX|          ------_--------------------------------------L
+|XXXXX|          --------------------------------------------E
+|XXXXX|          --------------------------------------------L
+|XXX_XX|          --------------------------------------------E
+|XXXXX|          --------------------------------------------L
+|XXXXX|          --------------------------------------------E
+|XXXXX|          _--------------------------------------------L
+|XXXXX|          ------------------------------------------------E
+|XXXXX|          ------------------------------_------------------L
+|XXXXX|          ------------------------------------------------E
+|XXXXX|          ------------------------------------------------L
+|XXXXX|          ------_------------------------------------------E
+|XXXXX|          ------------------------------------------------L
+|XXXXX|          ------------------------------------------------E
+|XXXXX|          _------------------------------------------------L
+|XXXXX|          ------------------------------------------------E
+|XXXXX|          ------------------------------------------------L
+_|XXXXX|          ------------------------------------------------E
+|XXXXX|          ------------------------------------------------L
+|XXXXX|          --------------------------------_----------------E
+|XXXXX|          ------------------------------------------------L
+|XXXXX|          ------------------------------------------------E
+|XXXXX|          --------------------------_----------------------L
+|XXXXX|          ------------------------------------------------E
+|XXXXX|          ------------------------------------------------L
+|XXXXX|          ---_---------------------------------------------E
+|XXXXX|          ------------------------------------------------L
+|XXXXX|          ------------------------------------------------E
+|XXXXX_|          ------------------------------------------------L
+|XXXXX|          ----------------------------------------------------E
+|XXXXX|          ------------------_----------------------------------L
+|XXXXX|          ----------------------------------------------------E
+|XXXXX|          ----------------------------------------------------L
+_|XXXXX|          ----------------------------------------------------E
+|XXXXX|          ----------------------------------------------------L
+|XXXXX|          ------------------------------_----------------------E
+|XXXXX|          ----------------------------------------------------L
+|XXXXX|          ----------------------------------------------------E
+|XXXXX|          -----------_-----------------------------------------L
+|XXXXX|          ----------------------------------------------------E
+|XXXXX|          ----------------------------------------------------L
+_|XXXXX|          ----------------------------------------------------E
+|XXXXX|          ----------------------------------------------------L
+|XXXXX|          ------------------------_----------------------------E
+|XXXXX|          ----------------------------------------------------L
+|XXXXX|          ----------------------------------------------------E
+|XXXXX|          ------_----------------------------------------------L
+|XXXXX|          ----------------------------------------------------E
+|XXXXX|          ----------------------------------------------------L
+_|XXXXX|          ----------------------------------------------------E
+|XXXXX|          ----------------------------------------------------L
+_|XXXXX|          --------------------------------------------------------E
+|XXXXX|          --------------------------------------------------------L
+|XXXXX|          -----------------------------_---------------------------E
+|XXXXX|          --------------------------------------------------------L
+|XXXXX|          --------------------------------------------------------E
+|XXXXX|          _--------------------------------------------------------L
+|XXXXX|          --------------------------------------------------------E
+|XXXXX|          ---------------------------------------_-----------------L
+|XXXXX|          --------------------------------------------------------E
+|XXXXX|          --------------------------------------------------------L
+|X_XXXX|          --------------------------------------------------------E
+|XXXXX|          --------------------------------------------------------L
+|XXXXX|          --------------------------------_------------------------E
+|XXXXX|          --------------------------------------------------------L
+|XXXXX|          --------------------------------------------------------E
+|XXXXX|          --_------------------------------------------------------L
+|XXXXX|          --------------------------------------------------------E
+|XXXXX|          ------------------------------------------_--------------L
+|XXXXX|          --------------------------------------------------------E
+|XXXXX|          --------------------------------------------------------L
+|XXX_XX|          --------------------------------------------------------E
+|XXXXX|          --------------------------------------------------------L
+|XXXXX|          -----_-------------------------------------------------------E
+|XXXXX|          ------------------------------------------------------------L
+|XXXXX|          -------------------------------------_-----------------------E
+|XXXXX|          ------------------------------------------------------------L
+|XXXXX|          ------------------------------------------------------------E
+|XXXX_X|          ------------------------------------------------------------L
+|XXXXX|          ------------------------------------------------------------E
+|XXXXX|          ---------------------------_---------------------------------L
+|XXXXX|          ------------------------------------------------------------E
+|XXXXX|          -----------------------------------------------------------_-L
+|XXXXX|          ------------------------------------------------------------E
+|XXXXX|          ------------------------------------------------------------L
+|XXXXX|          _------------------------------------------------------------E
+|XXXXX|          ------------------------------------------------------------L
+|XXXXX|          --------------------------------_----------------------------E
+|XXXXX|          ------------------------------------------------------------L
+|XXXXX|          ------------------------------------------------------------E
+|_XXXXX|          ------------------------------------------------------------L
+|XXXXX|          ------------------------------------------------------------E
+|XXXXX|          ----------------------_--------------------------------------L
+|XXXXX|          ------------------------------------------------------------E
+|XXXXX|          ------------------------------------------------------_------L
+|XXXXX|          ----------------------------------------------------------------E
+|XXXXX|          ----------------------------------------------------_------------L
+|XXXXX|          ----------------------------------------------------------------E
+|XXXXX|          ----------------------------------------------------------------L
+_|XXXXX|          ----------------------------------------------------------------E
+|XXXXX|          ----------------------------------------------------------------L
+|XXXXX|          -----_-----------------------------------------------------------E
+|XXXXX|          ----------------------------------------------------------------L
+|XXXXX|          -----------------------------_-----------------------------------E
+|XXXXX|          ----------------------------------------------------------------L
+|XXXXX|          -----------------------------------------------------_-----------E
+|XXXXX|          ----------------------------------------------------------------L
+|XXXXX|          ----------------------------------------------------------------E
+|XXXXX|          _----------------------------------------------------------------L
+|XXXXX|          ----------------------------------------------------------------E
+|XXXXX|          ------------------------_----------------------------------------L
+|XXXXX|          ----------------------------------------------------------------E
+|XXXXX|          ------------------------------------------------_----------------L
+|XXXXX|          ----------------------------------------------------------------E
+|XXXXX|          ----------------------------------------------------------------L
+_|XXXXX|          ----------------------------------------------------------------E
+|XXXXX|          ----------------------------------------------------------------L
+_|XXXXX|          --------------------------------------------------------------------E
+|XXXXX|          --------------------------------------------------------------------L
+_|XXXXX|          --------------------------------------------------------------------E
+|XXXXX|          --------------------------------------------------------------------L
+|XXXXX|          -_-------------------------------------------------------------------E
+|XXXXX|          --------------------------------------------------------------------L
+|XXXXX|          -----------------_---------------------------------------------------E
+|XXXXX|          --------------------------------------------------------------------L
+|XXXXX|          ----------------------------------_----------------------------------E
+|XXXXX|          --------------------------------------------------------------------L
+|XXXXX|          --------------------------------------------------_------------------E
+|XXXXX|          --------------------------------------------------------------------L
+|XXXXX|          ------------------------------------------------------------------_--E
+|XXXXX|          --------------------------------------------------------------------L
+|XXXXX|          --------------------------------------------------------------------E
+|XXXXX|          _--------------------------------------------------------------------L
+|XXXXX|          --------------------------------------------------------------------E
+|XXXXX|          ----------------_----------------------------------------------------L
+|XXXXX|          --------------------------------------------------------------------E
+|XXXXX|          --------------------------------_------------------------------------L
+|XXXXX|          --------------------------------------------------------------------E
+|XXXXX|          ------------------------------------------------_--------------------L
+|XXXXX|          ------------------------------------------------------------------------E
+|XXXXX|          -------------------------------_-----------------------------------------L
+|XXXXX|          ------------------------------------------------------------------------E
+|XXXXX|          ---------------------------------------_---------------------------------L
+|XXXXX|          ------------------------------------------------------------------------E
+|XXXXX|          ----------------------------------------------_--------------------------L
+|XXXXX|          ------------------------------------------------------------------------E
+|XXXXX|          -------------------------------------------------------_-----------------L
+|XXXXX|          ------------------------------------------------------------------------E
+|XXXXX|          --------------------------------------------------------------_----------L
+|XXXXX|          ------------------------------------------------------------------------E
+|XXXXX|          ----------------------------------------------------------------------_--L
+|XXXXX|          ------------------------------------------------------------------------E
+|XXXXX|          ------------------------------------------------------------------------L
+_|XXXXX|          ------------------------------------------------------------------------E
+|XXXXX|          ------------------------------------------------------------------------L
+_|XXXXX|          ------------------------------------------------------------------------E
+|XXXXX|          ------------------------------------------------------------------------L
+_|XXXXX|          ------------------------------------------------------------------------E
+|XXXXX|          ------------------------------------------------------------------------L
+|XXXXX|_          ------------------------------------------------------------------------E
+|XXXXX|          ------------------------------------------------------------------------L
+_|XXXXX|          ----------------------------------------------------------------------------E
+|XXXXX|          ----------------------------------------------------------------------------L
+_|XXXXX|          ----------------------------------------------------------------------------E
+|XXXXX|          ----------------------------------------------------------------------------L
+_|XXXXX|          ----------------------------------------------------------------------------E
+|XXXXX|          ----------------------------------------------------------------------------L
+_|XXXXX|          ----------------------------------------------------------------------------E
+|XXXXX|          ----------------------------------------------------------------------------L
+_|XXXXX|          ----------------------------------------------------------------------------E
+|XXXXX|          ----------------------------------------------------------------------------L
+_|XXXXX|          ----------------------------------------------------------------------------E
+|XXXXX|          ----------------------------------------------------------------------------L
+_|XXXXX|          ----------------------------------------------------------------------------E
+|XXXXX|          ----------------------------------------------------------------------------L
+_|XXXXX|          ----------------------------------------------------------------------------E
+|XXXXX|          ----------------------------------------------------------------------------L
+_|XXXXX|          ----------------------------------------------------------------------------E
+|XXXXX|          ----------------------------------------------------------------------------L
+_|XXXXX|          ----------------------------------------------------------------------------E
+|XXXXX|          ----------------------------------------------------------------------------L
+_|XXXXX|          ----------------------------------------------------------------------------E
+|XXXXX|          ----------------------------------------------------------------------------L
+__|XXXX_|  start
+_____________________________|XXXX_|  end
+_|XXX__|  start
+______________________________|XXX__|  end
+|XX___|  start
+______________________________|XX___|  end
+|X____|  start
+______________________________|X____|  end
+_|_____|  start
+______________________________|_____|  end
+|_____|          ------------B
+______________________________|_____|          ------------F
+|_____|          ------------L
+|_____|          ------------E
+|X____|          --_----------S
+|X____|          --------B
+______________________________|X____|          --------F
+|X____|          --------L
+|X____|          --------E
+|XX___|          _--------S
+|XX___|          ----------------B
+______________________________|XX___|          ----------------F
+|XX___|          ----------------L
+|XX___|          ----------------E
+|XXX__|          ----------_------S
+|XX___|  start
+______________________________|XX___|  end
+_|X____|  start
+______________________________|X____|  end
+|_____|  start
+______________________________|_____|  end
+|_____|_          --------B
+_____________________________|_____|          --------F
+|_____|          --------L
+|______|          --------E
+|X____|          --------S
+|X____|          ------------B
+______________________________|X____|          ------------F
+|X____|          ------------L
+_|X____|          ------------E
+|XX___|          ------------S
+|XX___|          ----------------B
+______________________________|XX___|          ----------------F
+|XX___|          ----------------L
+|XX____|          ----------------E
+|XXX__|          ----------------S
+|XX___|  start
+______________________________|XX___|  end
+_|X____|  start
+______________________________|X____|  end
+|_____|  start
+______________________________|_____|  end
+_|_____|          ------------B
+_____________________________|_____|          -----------_-F
+|_____|          ------------L
+|_____|          ------------E
+|X____|          ------------S
+_|X____|          --------B
+_____________________________|X____|_          --------F
+|X____|          --------L
+|X____|          --------E
+|XX___|          --------S
+|XX____|          ----------------B
+_____________________________|XX___|          ----------------F
+_|XX___|          ----------------L
+|XX___|          ----------------E
+|XXX__|          ----------------S
+_|XX___|  start
+______________________________|XX___|  end
+|X____|  start
+______________________________|X____|  end
+_|_____|  start
+______________________________|_____|  end
+|_____|          --------B
+______________________________|_____|          --------F
+|_____|          --------L
+|_____|          --------E
+|X____|          --------S
+_|X____|          ------------B
+______________________________|X____|          ------------F
+|X____|          ------------L
+|X____|          ------------E
+|XX___|          ------------S
+_|XX___|          ----------------B
+______________________________|XX___|          ----------------F
+|XX___|          ----------------L
+|XX___|          ----------------E
+|XXX__|          ----------------S
+_|XX___|  start
+______________________________|XX___|  end
+|X____|  start
+______________________________|X____|  end
+_|_____|  start
+______________________________|_____|  end
+|_____|          ------------B
+______________________________|_____|          ------------F
+|_____|          ------------L
+|_____|          ------------E
+|X____|          ---_---------S
+|X____|          --------B
+______________________________|X____|          --------F
+|X____|          --------L
+|X____|          --------E
+|XX___|          ---_-----S
+|XX___|          ----------------B
+______________________________|XX___|          ----------------F
+|XX___|          ----------------L
+|XX___|          ----------------E
+|XXX__|          ------------_----S
+|XX___|  start
+______________________________|XX___|  end
+_|X____|  start
+______________________________|X____|  end
+|_____|  start
+______________________________|_____|  end
+|______|          --------B
+_____________________________|_____|          --------F
+|_____|          --------L
+|______|          --------E
+|X____|          --------S
+|X____|          ------------B
+______________________________|X____|          ------------F
+|X____|          ------------L
+_|X____|          ------------E
+|XX___|          ------------S
+|XX___|          ----------------B
+______________________________|XX___|          ----------------F
+|XX___|          ----------------L
+|XX____|          ----------------E
+|XXX__|          ----------------S
+|XX___|  start
+______________________________|XX___|  end
+_|X____|  start
+______________________________|X____|  end
+|_____|  start
+______________________________|_____|  end
+_|_____|          ------------B
+_____________________________|_____|          ------------F
+_|_____|          ------------L
+|_____|          ------------E
+|X____|          ------------S
+_|X____|          --------B
+_____________________________|X____|          --_------F
+|X____|          --------L
+|X____|          --------E
+|XX___|          --------S
+|XX___|_          ----------------B
+_____________________________|XX___|          ----------------F
+_|XX___|          ----------------L
+|XX___|          ----------------E
+|XXX__|          ----------------S
+_|XX___|  start
+______________________________|XX___|  end
+|X____|  start
+______________________________|X____|  end
+|______|  start
+_____________________________|______|  end
+|_____|          --------B
+______________________________|_____|          --------F
+|_____|          --------L
+|_____|          --------E
+|X____|          --------S
+_|X____|          ------------B
+______________________________|X____|          ------------F
+|X____|          ------------L
+|X____|          ------------E
+|XX___|          ------------S
+_|XX___|          ----------------B
+_____________________________|X_X___|          ----------------F
+|XX___|          ----------------L
+|XX___|          ----------------E
+|XXX__|          ----------------S
+_|XX___|  start
+______________________________|XX___|  end
+|X____|  start
+______________________________|X____|  end
+_|_____|  start
+______________________________|_____|  end
+|_____|          ------------B
+______________________________|_____|          ------------F
+|_____|          ------------L
+|_____|          ------------E
+|X____|          ------------S
+_|X____|          --------B
+______________________________|X____|          --------F
+|X____|          --------L
+|X____|          --------E
+|XX___|          --------S
+_|XX___|          ----------------B
+______________________________|XX___|          ----------------F
+|XX___|          ----------------L
+|XX___|          ----------------E
+|XXX__|          ----------------S
+_|XX___|  start
+______________________________|XX___|  end
+_|X____|  start
+______________________________|X____|  end
+|_____|  start
+______________________________|_____|  end
+|_____|          --------B
+______________________________|_____|          --------F
+|_____|          --------L
+|_____|          --------E
+_|X____|          --------S
+|X____|          ------------B
+______________________________|X____|          ------------F
+|X____|          ------------L
+|X____|          ----_--------E
+|XX___|          ------------S
+|XX___|          ----------------B
+______________________________|XX___|          ----------------F
+|XX___|          ----------------L
+|XX___|          -----------_-----E
+|XXX__|          ----------------S
+|XX___|  start
+______________________________|XX___|  end
+_|X____|  start
+______________________________|X____|  end
+|_____|  start
+______________________________|_____|  end
+_|_____|          ------------B
+_____________________________|_____|          ------------F
+_|_____|          ------------L
+|_____|          --------B
+______________________________|_____|          --------F
+|_____|          --------L
+|_____|          ----B
+______________________________|_____|          ----F
+|_____|          ----L
+|_____|          ----E
+|X____|          ----S
+_|X____|          ----------------B
+______________________________|X____|          ----------------F
+|X____|          ----------------L
+_|_____|  start
+______________________________|_____|  end
+|_____|          ----B
+______________________________|_____|          ----F
+|_____|          ----L
+|_____|          ----E
+|X____|          ----S
+_|X____|          B
+_____________________________|X____|_          F
+|X____|          L
+|X____|          E
+|XX___|          S
+|X____|  start
+______________________________|X____|  end
+_|_____|  start
+_____________________________|______|  end
+|_____|          ----B
+______________________________|_____|          ----F
+|_____|          ----L
+|_____|          ----E
+|X____|          ----S
+|X_____|          B
+_____________________________|X____|          F
+|X____|          L
+_|X____|          E
+|XX___|          S
+|X____|  start
+______________________________|X____|  end
+|_____|  start
+______________________________|_____|  end
+_|_____|          ----B
+_____________________________|_____|          ----F
+_|_____|          ----L
+|_____|          ----E
+|X____|          ----S
+|X____|          B
+______________________________|X____|          F
+|X____|          L
+|X____|          E
+|XX___|          S
+_|X____|  start
+______________________________|X____|  end
+|_____|  start
+______________________________|_____|  end
+|______|          ----B
+_____________________________|_____|          ----F
+|_____|          ----L
+|_____|          --_--E
+|X____|          ----S
+|X____|          B
+______________________________|X____|          F
+|X____|          L
+|X____|          E
+|XX___|          S
+_|X____|  start
+______________________________|X____|  end
+|_____|  start
+______________________________|_____|  end
+|_____|          ----B
+______________________________|_____|          ----F
+|_____|          ----L
+|_____|          ----E
+|X____|          ----S
+_|X____|          B
+______________________________|X____|          F
+|X____|          L
+|X____|          E
+|XX___|          S
+_|X____|  start
+_____________________________|X____|  end
+_|_____|  start
+______________________________|_____|  end
+|_____|          ----B
+______________________________|_____|          ----F
+|_____|          ----L
+|_____|          ----E
+|X____|          ----S
+_|X____|          B
+_____________________________|X____|          _F
+|X____|          L
+|X____|          E
+|XX___|          S
+|X____|  start
+______________________________|X____|  end
+_|_____|  start
+_____________________________|______|  end
+|_____|          ----B
+______________________________|_____|          ----F
+|_____|          ----L
+|_____|          ----E
+|X____|          ----S
+|X_____|          B
+_____________________________|X____|          F
+|X____|          L
+_|X____|          E
+|XX___|          S
+|X____|  start
+______________________________|X____|  end
+|_____|  start
+______________________________|_____|  end
+_|_____|          ----B
+_____________________________|_____|          ----F
+_|_____|          ----L
+|_____|          ----E
+|X____|          ----S
+|X____|          B
+______________________________|X____|          F
+|X____|          L
+|X____|          E
+|XX___|          S
+_|X____|  start
+______________________________|X____|  end
+|_____|  start
+______________________________|_____|  end
+_|_____|          ----B
+_____________________________|_____|          ----F
+|_____|          ----L
+|______|          ----E
+|X____|          ----S
+|X____|          B
+______________________________|X____|          F
+|X____|          L
+|X____|          E
+|XX___|          S
+_|X____|  start
+______________________________|X____|  end
+|_____|  start
+______________________________|_____|  end
+|_____|          ----B
+______________________________|_____|          ----F
+|_____|          ----L
+_|_____|          B
+_____________________________|_____|          F
+|_____|          L
+|_____|          E
+|X_____|          S
+|_____|  start
+______________________________|_____|  end
+|_____|          B
+______________________________|_____|          F
+|_____|          L
+
+*****  A 'wait' instruction was executed and no more interrupts are scheduled... halting emulation!  *****
+
+Done!  The next instruction to execute will be:
+000EC8: 09000000       ret     
+Number of Disk Reads    = 0
+Number of Disk Writes   = 0
+Instructions Executed   = 17527670
+Time Spent Sleeping     = 0
+    Total Elapsed Time  = 17527670
+bash-3.2$ 
+bash-3.2$ 

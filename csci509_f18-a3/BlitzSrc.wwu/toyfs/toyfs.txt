@@ -1,0 +1,77 @@
+Sector Size 8192 bytes
+
+Sector 0:
+
+   4 bytes:  Magic Number: TyFs
+   4 bytes:  Size of disk in sectors
+   4 bytes:  Number of inodes (Multiple of 128)
+   4 bytes:  padding
+   4 bytes:  number of words of inode bitmap
+   inode bitmap (4 * number just before this)
+   4 bytes:  number of words of data bitmap
+   data bitmap (4 * number just before this)
+
+   (total size of  inode and data bitmap must be
+    8192 - 24 (number of specified ints)
+
+
+Sector 1 - k:  inodes
+Sectors k+1 - end: data blocks
+
+Inodes and data blocks are indexed starting at 1.
+
+inode 1 is root directory.
+
+inode:
+
+   2 bytes:  number of links
+   2 bytes:  mode (file type, r, w, x)
+   4 bytes:  size of file in bytes
+   4 bytes:  blocks allocated
+   4 bytes:  spare
+   4 bytes * 10 direct links
+   4 bytes:  single indirect (4 bytes)
+   4 bytes:  double indirect (not implemented) (4 bytes)
+---->  64 bytes
+
+   => 128 inodes per sector.
+   
+
+
+Directory entry:
+   Each Sector (maximum of 10)
+   [ 2 bytes, inode number
+     2 bytes, name length (max of 255), does not include 0 terminating
+     n bytes, name (not a '\0' terminated string)]
+
+   -1 inode number => no more entries
+   0  inode number => no more entries in this sector, more in next sector
+
+   required names:  .  and ..
+
+-------
+
+System calls:
+
+  open(name, flags, mode)
+  read(fd, buf, size)
+  write(fd, buf, size)
+  close(fd)
+  lseek(fd, offset, value)
+
+  stat(name, &statbuf)  / ptr to statbuf ...
+  
+  mkdir(name)
+  rmdir(name)
+  chdir(name)
+
+  opendir(name)
+  readdir(dir)
+  closedir(dir)
+
+  link(name,name)
+  unlink(name)
+
+  fsstat(&fsstat) ???
+
+  pipe(fd[2])

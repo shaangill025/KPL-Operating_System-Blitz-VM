@@ -1,0 +1,354 @@
+Script started on Tue Oct  2 08:00:19 2018
+[?1034hbash-3.2$ make
+lddd Echo.o -o Echo
+make: lddd: No such file or directory
+make: *** [Echo] Error 1
+bash-3.2$ install -d BlitzSrc.wwu
+bash-3.2$ source .profile
+bash-3.2$ make
+lddd Echo.o -o Echo
+lddd Hello.o -o Hello
+kpl System -unsafe
+asm System.s
+kpl HelloWorld
+asm HelloWorld.s
+lddd Runtime.o System.o HelloWorld.o -o HelloWorld
+bash-3.2$ blitz -g Hello
+Beginning execution...
+Hello, world!
+
+****  A 'debug' instruction was encountered  *****
+Done!  The next instruction to execute will be:
+000080: A1FFFFB8       jmp     0xFFFFB8		! targetAddr = main
+
+Entering machine-level debugger...
+======================================================
+=====                                            =====
+=====         The BLITZ Machine Emulator         =====
+=====                                            =====
+=====  Copyright 2001-2007, Harry H. Porter III  =====
+=====                                            =====
+======================================================
+
+Enter a command at the prompt.  Type 'quit' to exit or 'help' for
+info about commands.
+> q
+Number of Disk Reads    = 0
+Number of Disk Writes   = 0
+Instructions Executed   = 1705
+Time Spent Sleeping     = 0
+    Total Elapsed Time  = 1705
+bash-3.2$ blitz -g Hello[1P Hello[1P Hello[1PHello
+======================================================
+=====                                            =====
+=====         The BLITZ Machine Emulator         =====
+=====                                            =====
+=====  Copyright 2001-2007, Harry H. Porter III  =====
+=====                                            =====
+======================================================
+
+Enter a command at the prompt.  Type 'quit' to exit or 'help' for
+info about commands.
+> g
+Beginning execution...
+Hello, world!
+
+****  A 'debug' instruction was encountered  *****
+Done!  The next instruction to execute will be:
+000080: A1FFFFB8       jmp     0xFFFFB8		! targetAddr = main
+> q
+Number of Disk Reads    = 0
+Number of Disk Writes   = 0
+Instructions Executed   = 1705
+Time Spent Sleeping     = 0
+    Total Elapsed Time  = 1705
+bash-3.2$ asm Echo.s
+bash-3.2$ lddd Echo.o -0[Ko Echp[Ko
+bash-3.2$ blitz Echo
+======================================================
+=====                                            =====
+=====         The BLITZ Machine Emulator         =====
+=====                                            =====
+=====  Copyright 2001-2007, Harry H. Porter III  =====
+=====                                            =====
+======================================================
+
+Enter a command at the prompt.  Type 'quit' to exit or 'help' for
+info about commands.
+> test
+Unrecognized command.
+Enter a command at the prompt.  Type 'quit' to exit or 'help' for info about commands.
+> g
+Beginning execution...
+test
+test
+q
+q
+****  A 'debug' instruction was encountered  *****
+Done!  The next instruction to execute will be:
+                   cont:
+0000A4: A1FFFFAC       jmp     0xFFFFAC		! targetAddr = loop
+> q
+Number of Disk Reads    = 0
+Number of Disk Writes   = 0
+Instructions Executed   = 26082903
+Time Spent Sleeping     = 0
+    Total Elapsed Time  = 26082903
+bash-3.2$ kpl - [Kunsfe[K[Kafe System
+bash-3.2$ asm System.s
+bash-3.2$ kpl Hellow[KWol[Krld
+bash-3.2$ asm HelloWorld.s
+bash-3.2$ asm Runtime.s
+bash-3.2$ lddd Runtime.o System.o Hellow[KWorld.o -0[Ko HelloWorld
+bash-3.2$ blitz -g HelloWorld
+Beginning execution...
+====================  KPL PROGRAM STARTING  ====================
+Hello, world...
+The value of b is 12
+
+****  A 'debug' instruction was encountered  *****
+Done!  The next instruction to execute will be:
+002904: 8B1EFFF0       load    [r14+0xFFF0],r1	! decimal: -16
+
+Entering machine-level debugger...
+======================================================
+=====                                            =====
+=====         The BLITZ Machine Emulator         =====
+=====                                            =====
+=====  Copyright 2001-2007, Harry H. Porter III  =====
+=====                                            =====
+======================================================
+
+Enter a command at the prompt.  Type 'quit' to exit or 'help' for
+info about commands.
+> test
+Unrecognized command.
+Enter a command at the prompt.  Type 'quit' to exit or 'help' for info about commands.
+> g
+Beginning execution...
+The value of b is 13
+
+****  A 'debug' instruction was encountered  *****
+Done!  The next instruction to execute will be:
+002904: 8B1EFFF0       load    [r14+0xFFF0],r1	! decimal: -16
+> test
+Unrecognized command.
+Enter a command at the prompt.  Type 'quit' to exit or 'help' for info about commands.
+> q
+Number of Disk Reads    = 0
+Number of Disk Writes   = 0
+Instructions Executed   = 694
+Time Spent Sleeping     = 0
+    Total Elapsed Time  = 694
+bash-3.2$ kpl HelloWol[Krld
+bash-3.2$ a[Kmake
+asm HelloWorld.s
+lddd Runtime.o System.o HelloWorld.o -o HelloWorld
+bash-3.2$ kpl HelloWorld
+bash-3.2$ blitz -g HelloWorld
+Beginning execution...
+====================  KPL PROGRAM STARTING  ====================
+Hello, world...
+The value of b is 12
+
+****  A 'debug' instruction was encountered  *****
+Done!  The next instruction to execute will be:
+002904: 8B1EFFF0       load    [r14+0xFFF0],r1	! decimal: -16
+
+Entering machine-level debugger...
+======================================================
+=====                                            =====
+=====         The BLITZ Machine Emulator         =====
+=====                                            =====
+=====  Copyright 2001-2007, Harry H. Porter III  =====
+=====                                            =====
+======================================================
+
+Enter a command at the prompt.  Type 'quit' to exit or 'help' for
+info about commands.
+> g
+Beginning execution...
+The value of b is 13
+
+****  A 'debug' instruction was encountered  *****
+Done!  The next instruction to execute will be:
+002904: 8B1EFFF0       load    [r14+0xFFF0],r1	! decimal: -16
+> g
+Beginning execution...
+The value of b is 14
+
+****  A 'debug' instruction was encountered  *****
+Done!  The next instruction to execute will be:
+002904: 8B1EFFF0       load    [r14+0xFFF0],r1	! decimal: -16
+> q
+Number of Disk Reads    = 0
+Number of Disk Writes   = 0
+Instructions Executed   = 779
+Time Spent Sleeping     = 0
+    Total Elapsed Time  = 779
+bash-3.2$ blitz -g HelloWorld[C[C[C[C[C[C[C[C[C[C[5Pkpl[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[5@blitz -g[C[C[C[C[C[C[C[C[C[C[C
+Beginning execution...
+====================  KPL PROGRAM STARTING  ====================
+Hello, world...
+The value of b is 12
+
+****  A 'debug' instruction was encountered  *****
+Done!  The next instruction to execute will be:
+002904: 8B1EFFF0       load    [r14+0xFFF0],r1	! decimal: -16
+
+Entering machine-level debugger...
+======================================================
+=====                                            =====
+=====         The BLITZ Machine Emulator         =====
+=====                                            =====
+=====  Copyright 2001-2007, Harry H. Porter III  =====
+=====                                            =====
+======================================================
+
+Enter a command at the prompt.  Type 'quit' to exit or 'help' for
+info about commands.
+> g st
+   Function/Method            Frame Addr   Execution at...
+   ========================   ==========   =====================
+   bar                         00FFFEC8    HelloWorld.k, line 22
+   foo                         00FFFEE0    HelloWorld.k, line 13
+   main                        00FFFEF8    HelloWorld.k, line 7
+Bottom of activation frame stack!
+> fr
+=====  Frame number 0 (where StackTop = 0)  =====
+Function Name:    bar
+Filename:         HelloWorld.k
+Execution now at: line 22
+Frame Addr:       00FFFEC8
+frameSize:        12
+totalParmSize:    4
+                         ==========
+   sp--> -20   00FFFEB4:  0000000C
+         -16   00FFFEB8:  0000000C
+         -12   00FFFEBC:  0000906C
+R.D.ptr:  -8   00FFFEC0:  00002930
+    r13:  -4   00FFFEC4:  0000000D
+     fp:   0   00FFFEC8:  00FFFEE0
+RetAddr:   4   00FFFECC:  00002814
+                         ==========
+   Args:   8   00FFFED0:  0000000B
+
+PARAMETERS AND LOCAL VARIABLES WITHIN THIS FRAME:
+=================================================
+  a: int
+           8   00FFFED0:  0000000B    value = 11
+  _temp_15
+         -12   00FFFEBC:  0000906C
+  b: int
+         -16   00FFFEB8:  0000000C    value = 12
+=================================================
+> up
+Already at top of stack!
+=====  Frame number 0 (where StackTop = 0)  =====
+Function Name:    bar
+Filename:         HelloWorld.k
+Execution now at: line 22
+Frame Addr:       00FFFEC8
+frameSize:        12
+totalParmSize:    4
+                         ==========
+   sp--> -20   00FFFEB4:  0000000C
+         -16   00FFFEB8:  0000000C
+         -12   00FFFEBC:  0000906C
+R.D.ptr:  -8   00FFFEC0:  00002930
+    r13:  -4   00FFFEC4:  0000000D
+     fp:   0   00FFFEC8:  00FFFEE0
+RetAddr:   4   00FFFECC:  00002814
+                         ==========
+   Args:   8   00FFFED0:  0000000B
+
+PARAMETERS AND LOCAL VARIABLES WITHIN THIS FRAME:
+=================================================
+  a: int
+           8   00FFFED0:  0000000B    value = 11
+  _temp_15
+         -12   00FFFEBC:  0000906C
+  b: int
+         -16   00FFFEB8:  0000000C    value = 12
+=================================================
+> up
+Already at top of stack!
+=====  Frame number 0 (where StackTop = 0)  =====
+Function Name:    bar
+Filename:         HelloWorld.k
+Execution now at: line 22
+Frame Addr:       00FFFEC8
+frameSize:        12
+totalParmSize:    4
+                         ==========
+   sp--> -20   00FFFEB4:  0000000C
+         -16   00FFFEB8:  0000000C
+         -12   00FFFEBC:  0000906C
+R.D.ptr:  -8   00FFFEC0:  00002930
+    r13:  -4   00FFFEC4:  0000000D
+     fp:   0   00FFFEC8:  00FFFEE0
+RetAddr:   4   00FFFECC:  00002814
+                         ==========
+   Args:   8   00FFFED0:  0000000B
+
+PARAMETERS AND LOCAL VARIABLES WITHIN THIS FRAME:
+=================================================
+  a: int
+           8   00FFFED0:  0000000B    value = 11
+  _temp_15
+         -12   00FFFEBC:  0000906C
+  b: int
+         -16   00FFFEB8:  0000000C    value = 12
+=================================================
+> down
+=====  Frame number 1 (where StackTop = 0)  =====
+Function Name:    foo
+Filename:         HelloWorld.k
+Execution now at: line 13
+Frame Addr:       00FFFEE0
+frameSize:        8
+totalParmSize:    4
+                         ==========
+         -16   00FFFED0:  0000000B
+         -12   00FFFED4:  0000000B
+R.D.ptr:  -8   00FFFED8:  0000282C
+    r13:  -4   00FFFEDC:  00000007
+     fp:   0   00FFFEE0:  00FFFEF8
+RetAddr:   4   00FFFEE4:  00002770
+                         ==========
+   Args:   8   00FFFEE8:  0000000A
+
+PARAMETERS AND LOCAL VARIABLES WITHIN THIS FRAME:
+=================================================
+  x: int
+           8   00FFFEE8:  0000000A    value = 10
+  _temp_11
+         -12   00FFFED4:  0000000B
+=================================================
+> s
+Done!  The next instruction to execute will be:
+002908: 8F1F0000       store   r1,[r15+0x0000]	! decimal: 0  (_entry)
+> s
+Done!  The next instruction to execute will be:
+00290C: 87D00017       or      r0,0x0017,r13	! decimal: 23, ascii: ".."  
+> s
+Done!  The next instruction to execute will be:
+002910: 87A04341       or      r0,0x4341,r10	! decimal: 17217, ascii: "CA"  
+> s
+Done!  The next instruction to execute will be:
+002914: A0FFFF58       call    0xFFFF58		! targetAddr = _function_3_bar
+> t
+About to execute FUNCTION ENTRY                    in bar (HelloWorld.k, line 16)  time = 632
+> t
+About to execute ASSIGN statement                  in bar (HelloWorld.k, line 18)  time = 634
+> t
+About to execute FUNCTION CALL (external function) in bar (HelloWorld.k, line 19)  time = 646
+> t
+The value of b is 13About to execute FUNCTION CALL                     in bar (HelloWorld.k, line 21)  time = 663
+> q
+Number of Disk Reads    = 0
+Number of Disk Writes   = 0
+Instructions Executed   = 663
+Time Spent Sleeping     = 0
+    Total Elapsed Time  = 663
+bash-3.2$ 
